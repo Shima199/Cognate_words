@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognate Finder - Landing Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Add this line for navbar container styles -->
+</head>
+<body>
+    <!-- Create a container specifically for the navigation bar -->
+    <div class="navbar-container">
+        <!-- Include the navigation bar HTML code here -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Cognate Finder Logo" class="logo-img">
+                </div>
+                
+                    <ul class="nav">
+                        <li class="nav-item"><a href="/cognate_finder" class="nav-link">Find Cognates</a></li>
+                    </ul>
+                    <ul class="nav">
+                        <li><a href="/suggest" class="nav-link">suggestions</a></li>
+                    </ul>
+                
+            </div>
+        </nav>
+    </div>
+
+    <!-- Rest of your landing page content -->
+    <div class="body-container">
+    <div class="container">
+        <h1>Cognate Finder</h1>
+        <p><b>What is cognate words?</b></p>
+        <p>Cognates are words in two languages that share a similar meaning, spelling, and pronunciation.</p>
+        <button onclick="window.location.href='/cognate_finder'" class="btn btn-primary">Cognate Finder</button>
+    </div>
+</div>
+</body>
+</html>

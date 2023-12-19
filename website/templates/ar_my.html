@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognate Word Checker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar-container">
+        <!-- Include the navigation bar HTML code here -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Cognate Finder Logo" class="logo-img">
+                </div>
+                <ul class="nav">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                </ul>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/cognate_finder" class="nav-link">Find Cognates</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="body-cont">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Cognate Word Checker</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="post" action="/ar_my">
+                        <div class="form-group">
+                            <label for="arabic_word">Enter an Arabic Word:</label>
+                            <input type="text" class="form-control" id="arabic_word" name="arabic_word" value="{{ arabic_word }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="malay_word">Enter the Malay Word:</label>
+                            <input type="text" class="form-control" id="malay_word" name="malay_word" value="{{ malay_word }}" required>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Check Cognate</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center" id="result">
+                        <h2 {% if cognate_percentage >= 50 %} style="color: green;" {% else %} style="color: red;" {% endif %}>
+                            {% if cognate_percentage >= 50 %}
+                                Cognate words!
+                            {% else %}
+                                Not cognate words.
+                            {% endif %}
+                        </h2>
+                        <p>Transliterated Arabic word: {{ transliterated_arabic_word }}</p>
+                        <p>Transliterated Malay word: {{ transliterated_malay_word }}</p>
+                        <p>Similarity Percentage: {{ cognate_percentage }}%</p>
+                    </div>
+                    <a href="/cognate_finder" class="btn btn-primary">Go to AR-EN</a>
+                    <a href="/en_my" class="btn btn-primary">Go to EN-MY</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

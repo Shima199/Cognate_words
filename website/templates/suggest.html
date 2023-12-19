@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognate Word Suggestion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar-container">
+        <!-- Include the navigation bar HTML code here -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Cognate Finder Logo" class="logo-img">
+                </div>
+                <ul class="nav">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                </ul>
+                <ul class="nav">
+                    <li class="nav-item"><a href="/cognate_finder" class="nav-link">Find Cognates</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="body-cont">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Cognate Word Suggestion</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="post" action="/suggest">
+                        <div class="form-group">
+                            <label for="arabic_word">Enter an Arabic Word:</label>
+                            <input type="text" class="form-control" id="arabic_word" name="arabic_word" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="english_word">Enter an English Word:</label>
+                            <input type="text" class="form-control" id="english_word" name="english_word" required>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Submit Suggestion</button>
+                        </div>
+                    </form>
+
+                    <!-- Display a message based on the submission result -->
+                    {% if message %}
+                        <div class="alert alert-{{ message_type }} text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+
+                    <a href="/" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
